@@ -2,7 +2,8 @@
 import { computed, ref, watch } from 'vue'
 import { content } from './content.js'
 
-const lang = ref('en')
+const props = defineProps({ initialLanguage: { type: String, default: 'en' } })
+const lang = ref(props.initialLanguage)
 const c = computed(() => content[lang.value])
 const copy = computed(() => lang.value === 'en' ? {
   gamesKicker: 'A LITTLE SHOWTIME ENERGY', gamesTitle: 'Keep your audience in the action.', gamesIntro: 'Use the shared spectator view to bring a little momentum to your next show.',

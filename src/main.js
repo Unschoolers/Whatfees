@@ -1,5 +1,4 @@
-import { createApp } from 'vue'
-import App from './App.vue'
+import { createMarketingApp } from './create-app.js'
 import './style.css'
 
-createApp(App).mount('#app')
+createMarketingApp({ initialLanguage: document.documentElement.lang }).mount('#app')
