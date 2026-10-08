@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref, watch } from 'vue'
+import { computed, ref } from 'vue'
 import { content } from './content.js'
 import SearchPage from './SearchPage.vue'
 import HeroProof from './HeroProof.vue'
@@ -7,60 +7,37 @@ import ProductProof from './ProductProof.vue'
 import GamesPreview from './GamesPreview.vue'
 import PlanExpectations from './PlanExpectations.vue'
 import SearchLinks from './SearchLinks.vue'
-import { landingContent } from './landing-content.js'
+import { pagePath } from './routes.js'
 
 const props = defineProps({ initialLanguage: { type: String, default: 'en' }, initialPage: { type: String, default: 'home' } })
 const lang = ref(props.initialLanguage)
 const c = computed(() => content[lang.value])
 const copy = computed(() => lang.value === 'en' ? {
-  gamesKicker: 'A LITTLE SHOWTIME ENERGY', gamesTitle: 'Keep your audience in the action.', gamesIntro: 'Use the shared spectator view to bring a little momentum to your next show.',
-  games: [
-    { mark: '↻', title: 'Wheel', body: 'Spin the wheel for your next show moment.' },
-    { mark: '▦', title: 'Mystery grid', body: 'Let buyers pick a square and reveal a surprise.' },
-    { mark: '⌘', title: 'Bracket battles', body: 'Put fan favourites head to head.' }
-  ],
-  appNote:'Your selling sidekick, on web and Android.', appLink:'app.whatfees.ca', appButton:'Open the web app', androidButton:'Google Play', close:'Close', navLabel:'Main navigation', homeLabel:'WhatFees home', fieldNotes:'WF / FIELD NOTES', saleNote:'SALE NOTE', costFeesProfit:'COST / FEES / PROFIT', showTool:'SHOW TOOL', openScreenshot:'Open full-size screenshot in a new tab', illustrationLabel:'Illustrative sale breakdown', collectPriceSell:'COLLECT · PRICE · SELL', toolkitIndex:'02 / TOOLKIT', benefitsLabel:'WhatFees benefits'
+  appNote:'Your selling sidekick, on web and Android.', navLabel:'Main navigation', homeLabel:'WhatFees home', collectPriceSell:'COLLECT · PRICE · SELL', toolkitIndex:'02 / TOOLKIT', benefitsLabel:'WhatFees benefits'
 } : {
-  gamesKicker: 'UN PEU D’ANIMATION EN DIRECT', gamesTitle: 'Faites participer votre public.', gamesIntro: 'La vue spectateur partagée donne du rythme à votre prochain direct.',
-  games: [
-    { mark: '↻', title: 'Roue', body: 'Faites tourner la roue pour animer votre prochain direct.' },
-    { mark: '▦', title: 'Grille mystère', body: 'Laissez les acheteurs choisir une case surprise.' },
-    { mark: '⌘', title: 'Tournoi à élimination', body: 'Faites s’affronter les favoris du public.' }
-  ],
-  appNote:'Votre allié de vente sur le Web et Android.', appLink:'app.whatfees.ca', appButton:'Ouvrir l’application Web', androidButton:'Google Play', close:'Fermer', navLabel:'Navigation principale', homeLabel:'Accueil WhatFees', fieldNotes:'WF / CARNET DE BORD', saleNote:'NOTE DE VENTE', costFeesProfit:'COÛT / FRAIS / PROFIT', showTool:'OUTIL DE DIRECT', openScreenshot:'Ouvrir la capture en taille réelle dans un nouvel onglet', illustrationLabel:'Exemple indicatif de vente', collectPriceSell:'COLLECTER · TARIFER · VENDRE', toolkitIndex:'02 / OUTILS', benefitsLabel:'Avantages WhatFees'
+  appNote:'Votre allié de vente sur le Web et Android.', navLabel:'Navigation principale', homeLabel:'Accueil WhatFees', collectPriceSell:'COLLECTER · TARIFER · VENDRE', toolkitIndex:'02 / OUTILS', benefitsLabel:'Avantages WhatFees'
 })
 const androidUrl = 'https://play.google.com/store/apps/details?id=io.whatfees'
 const appUrl = 'https://app.whatfees.ca'
-const base = import.meta.env.BASE_URL
-const assetUrl = (path) => `${base}${path.replace(/^\//, '')}`
-watch(lang, (value) => {
-  document.documentElement.lang = value
-  const metadata = props.initialPage === 'home' ? c.value : landingContent[value].pages[props.initialPage]
-  document.title = metadata.title
-  const description = document.querySelector('meta[name="description"]')
-  const socialTitle = document.querySelector('meta[property="og:title"]')
-  const socialDescription = document.querySelector('meta[property="og:description"]')
-  if (description) description.content = metadata.description
-  if (socialTitle) socialTitle.content = metadata.title
-  if (socialDescription) socialDescription.content = metadata.description
-})
+const homePath = computed(() => pagePath('home',lang.value))
 </script>
 
 <template>
   <a class="skip-link" href="#main">{{ c.skip }}</a>
   <header class="site-header">
-    <a class="wordmark" :href="initialPage === 'home' ? '#top' : '/'" :aria-label="copy.homeLabel"><span class="wordmark-symbol">W</span><span>WHATFEES<span class="wordmark-period">.</span></span></a>
+    <a class="wordmark" :href="homePath + '#top'" :aria-label="copy.homeLabel"><span class="wordmark-symbol">W</span><span>WHATFEES<span class="wordmark-period">.</span></span></a>
     <nav class="main-nav" :aria-label="copy.navLabel">
-      <a :href="initialPage === 'home' ? '#features' : '/#features'">{{ c.nav[0] }}</a><a :href="initialPage === 'home' ? '#inside' : '/#inside'">{{ c.nav[1] }}</a><a :href="initialPage === 'home' ? '#faq' : '/#faq'">{{ c.nav[2] }}</a>
+      <a :href="homePath + '#features'">{{ c.nav[0] }}</a><a :href="homePath + '#inside'">{{ c.nav[1] }}</a><a :href="homePath + '#faq'">{{ c.nav[2] }}</a>
     </nav>
     <div class="header-actions">
-      <button class="language-toggle" type="button" @click="lang = lang === 'en' ? 'fr' : 'en'">{{ c.language }}</button>
+      <a class="language-toggle" :href="pagePath(initialPage === 'notFound' ? 'home' : initialPage, lang === 'en' ? 'fr' : 'en')" :hreflang="lang === 'en' ? 'fr' : 'en'">{{ c.language }}</a>
       <a class="header-cta" :href="appUrl">{{ c.cta }} <span aria-hidden="true">↗</span></a>
     </div>
   </header>
 
   <main id="main">
-    <SearchPage v-if="initialPage !== 'home'" :page="initialPage" :lang="lang" />
+    <section v-if="initialPage === 'notFound'" class="search-page section-wrap"><h1>Page not found</h1><p>The page you requested does not exist.</p><a class="button button-dark" href="/">Return to WhatFees</a></section>
+    <SearchPage v-else-if="initialPage !== 'home'" :page="initialPage" :lang="lang" />
     <template v-else>
     <section id="top" class="hero section-wrap">
       <div class="hero-copy">
@@ -113,5 +90,5 @@ watch(lang, (value) => {
     <SearchLinks :lang="lang" />
   </main>
 
-  <footer class="site-footer section-wrap"><a class="wordmark footer-brand" :href="initialPage === 'home' ? '#top' : '/'"><span class="wordmark-symbol">W</span><span>WHATFEES<span class="wordmark-period">.</span></span></a><p>{{ c.footer }}</p><div><span>{{ c.legal }}</span></div><small>© {{ new Date().getFullYear() }} WhatFees</small></footer>
+  <footer class="site-footer section-wrap"><a class="wordmark footer-brand" :href="homePath + '#top'"><span class="wordmark-symbol">W</span><span>WHATFEES<span class="wordmark-period">.</span></span></a><p>{{ c.footer }}</p><div><span>{{ c.legal }}</span></div><small>© {{ new Date().getFullYear() }} WhatFees</small></footer>
 </template>

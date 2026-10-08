@@ -9,6 +9,6 @@ const copy = computed(() => landingContent[props.lang])
 <template>
   <section class="search-links section-wrap" aria-labelledby="search-links-title">
     <h2 id="search-links-title">{{ copy.linksTitle }}</h2><p>{{ copy.linksIntro }}</p>
-    <div class="search-link-grid"><a v-for="(page,id) in copy.pages" :key="id" :href="pagePath(id)"><span>{{ page.heading }}</span><span aria-hidden="true">↗</span></a></div>
+    <div class="search-link-grid"><a v-for="(page,id) in copy.pages" :key="id" :href="pagePath(id,lang)"><span>{{ page.heading }}</span><span aria-hidden="true">↗</span></a></div>
   </section>
 </template>

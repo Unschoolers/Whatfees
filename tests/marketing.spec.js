@@ -23,7 +23,7 @@ for (const width of viewportWidths) {
     await page.setViewportSize({ width, height: 900 })
     await page.goto('/')
 
-    const languageToggle = page.getByRole('button', { name: expected.en.toggle })
+    const languageToggle = page.getByRole('link', { name: expected.en.toggle })
     await expect(languageToggle).toBeVisible()
     expect(await page.locator('a[href="https://app.whatfees.ca"]').count()).toBeGreaterThanOrEqual(3)
     await expect(page.locator('a[href="https://play.google.com/store/apps/details?id=io.whatfees"]')).toHaveCount(1)
@@ -66,7 +66,7 @@ for (const width of viewportWidths) {
 
     expect(pageErrors).toEqual([])
 
-    const activeToggle = page.getByRole('button', { name: expected.fr.toggle })
+    const activeToggle = page.getByRole('link', { name: expected.fr.toggle })
     await activeToggle.focus()
     await page.keyboard.press('Enter')
     await expect(page.locator('html')).toHaveAttribute('lang', 'en')

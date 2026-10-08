@@ -3,4 +3,4 @@ import { resolveRoute } from './routes.js'
 import './style.css'
 
 const route = resolveRoute(window.location.pathname)
-createMarketingApp({ initialLanguage: document.documentElement.lang, initialPage: route.id }).mount('#app')
+createMarketingApp({ initialLanguage: route.id === 'notFound' ? document.documentElement.lang : route.lang, initialPage: route.id }).mount('#app')
