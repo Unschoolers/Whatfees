@@ -2,6 +2,10 @@
 import { computed, ref, watch } from 'vue'
 import { content } from './content.js'
 import SearchPage from './SearchPage.vue'
+import HeroProof from './HeroProof.vue'
+import ProductProof from './ProductProof.vue'
+import GamesPreview from './GamesPreview.vue'
+import PlanExpectations from './PlanExpectations.vue'
 import SearchLinks from './SearchLinks.vue'
 import { landingContent } from './landing-content.js'
 
@@ -65,43 +69,17 @@ watch(lang, (value) => {
         <p class="hero-intro">{{ c.intro }}</p>
         <div class="hero-actions">
           <a class="button button-dark" :href="appUrl">{{ c.cta }} <span aria-hidden="true">↗</span></a>
-          <a class="text-link" :href="initialPage === 'home' ? '#features' : '/#features'">{{ c.secondary }} <span aria-hidden="true">↓</span></a>
+          <a class="text-link" href="#inside">{{ c.secondary }} <span aria-hidden="true">↓</span></a>
         </div>
         <p class="hero-note"><span class="note-rule"></span>{{ c.note }}</p>
       </div>
-      <div class="hero-art" :aria-label="copy.illustrationLabel">
-        <div class="hero-art-top"><span>{{ copy.fieldNotes }}</span><span>{{ lang === 'en' ? 'NO.' : 'Nº' }} 001</span></div>
-        <div class="receipt">
-          <div class="receipt-head"><span class="receipt-stamp">{{ copy.saleNote }}</span><span class="receipt-title">{{ c.demoLabel }}</span></div>
-          <p class="receipt-kicker">{{ c.demoKicker }}</p>
-          <p class="receipt-item">{{ c.demoItem }}</p>
-          <div class="receipt-row"><span>{{ c.gross }}</span><strong>$100</strong></div>
-          <div class="receipt-row fee"><span>− {{ c.platform }}</span><strong>−$11</strong></div>
-          <div class="receipt-row fee"><span>− {{ c.cost }}</span><strong>−$60</strong></div>
-          <div class="receipt-total"><span>{{ c.keep }}</span><strong>$29</strong></div>
-          <p class="receipt-foot">{{ c.demoFoot }}</p>
-        </div>
-        <div class="art-index">{{ copy.costFeesProfit }}</div>
-        <span class="art-star" aria-hidden="true">✳</span>
-      </div>
+      <HeroProof :lang="lang" />
       <div class="hero-rail"><span>{{ copy.collectPriceSell }}</span><span>01 — 03</span></div>
     </section>
 
     <section class="benefit-strip" :aria-label="copy.benefitsLabel"><div v-for="(item, i) in c.strip" :key="item" class="benefit-item"><span class="benefit-number">0{{ i + 1 }}</span><span>{{ item }}</span><span class="benefit-arrow">↗</span></div></section>
 
-    <section class="workflow section-wrap">
-      <div class="section-heading">
-        <p class="eyebrow">{{ c.sectionKicker }}</p>
-        <h2>{{ c.workflowTitle }}</h2>
-        <p>{{ c.workflowIntro }}</p>
-      </div>
-      <div class="workflow-steps">
-        <article v-for="step in c.steps" :key="step.n" class="workflow-step">
-          <div class="step-top"><span>{{ step.n }}</span><span class="step-line"></span><span class="step-mark">✳</span></div>
-          <h3>{{ step.title }}</h3><p>{{ step.body }}</p>
-        </article>
-      </div>
-    </section>
+    <ProductProof :lang="lang" />
 
     <section id="features" class="feature-section">
       <div class="section-wrap">
@@ -118,17 +96,8 @@ watch(lang, (value) => {
       </div>
     </section>
 
-    <section class="games-section section-wrap">
-      <div class="games-heading"><div><p class="eyebrow">{{ copy.gamesKicker }}</p><h2>{{ copy.gamesTitle }}</h2></div><p>{{ copy.gamesIntro }}</p></div>
-      <div class="games-grid"><article v-for="(game, i) in copy.games" :key="game.title" class="game-card" :class="`game-card-${i + 1}`"><span class="game-index">{{ copy.showTool }} / 0{{ i + 1 }}</span><span class="game-mark" aria-hidden="true">{{ game.mark }}</span><h3>{{ game.title }}</h3><p>{{ game.body }}</p></article></div>
-    </section>
-
-    <section id="inside" class="gallery-section">
-      <div class="section-wrap">
-        <div class="gallery-heading"><div><p class="eyebrow">{{ c.galleryKicker }}</p><h2>{{ c.galleryTitle }}</h2></div><p>{{ c.galleryIntro }}</p></div>
-        <div class="gallery-grid"><article v-for="(shot, i) in c.gallery" :key="shot.src" class="gallery-card"><div class="shot-frame" :class="`shot-${i + 1}`"><a class="screenshot-link" :href="assetUrl(shot.src)" target="_blank" rel="noreferrer" :aria-label="`${shot.title}: ${copy.openScreenshot}`"><img :src="assetUrl(shot.src)" :alt="shot.alt" loading="lazy" /></a><span class="shot-counter">0{{ i + 1 }} / 03</span></div><div class="gallery-caption"><div><h3>{{ shot.title }}</h3><p>{{ shot.caption }}</p></div><span aria-hidden="true">↗</span></div></article></div>
-      </div>
-    </section>
+    <GamesPreview :lang="lang" />
+    <PlanExpectations :lang="lang" />
 
     <section id="faq" class="faq-section section-wrap">
       <div class="faq-heading"><p class="eyebrow">{{ c.faqKicker }}</p><h2>{{ c.faqTitle }}</h2><div class="faq-aside"><span class="aside-star">✳</span><p>{{ copy.appNote }}</p></div></div>

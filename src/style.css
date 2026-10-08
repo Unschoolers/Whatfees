@@ -1663,9 +1663,7 @@ button {
     gap: 5px
   }
 
-  .hero h1 {
-    font-size: 54px
-  }
+
 
   .hero-art {
     padding-inline: 12px
@@ -1706,4 +1704,9 @@ button {
   .hero-actions { flex-wrap: wrap; gap: 16px; }
   .workflow-step { grid-template-columns: 1fr; }
   .workflow-step p { max-width: none; margin-top: 8px; }
+}
+
+@media (max-width: 620px) {
+  .hero h1 { font-size: clamp(48px, 13vw, 64px); }
+  .text-link { display: inline-flex; align-items: center; }
 }

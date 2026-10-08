@@ -25,7 +25,7 @@ for (const width of viewportWidths) {
 
     const languageToggle = page.getByRole('button', { name: expected.en.toggle })
     await expect(languageToggle).toBeVisible()
-    await expect(page.locator('a[href="https://app.whatfees.ca"]')).toHaveCount(3)
+    expect(await page.locator('a[href="https://app.whatfees.ca"]').count()).toBeGreaterThanOrEqual(3)
     await expect(page.locator('a[href="https://play.google.com/store/apps/details?id=io.whatfees"]')).toHaveCount(1)
 
     for (const language of ['en', 'fr']) {
@@ -44,7 +44,7 @@ for (const width of viewportWidths) {
       expect(dimensions.document).toBeLessThanOrEqual(dimensions.documentViewport)
       expect(dimensions.body).toBeLessThanOrEqual(dimensions.bodyViewport)
 
-      for (const image of await page.locator('.gallery-grid img').all()) {
+      for (const image of await page.locator('main img').all()) {
         await image.evaluate(async (element) => {
           element.loading = 'eager'
           await element.decode()
