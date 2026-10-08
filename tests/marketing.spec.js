@@ -5,14 +5,14 @@ const expected = {
   en: {
     toggle: 'Français',
     nextToggle: 'English',
-    title: 'WhatFees — Know your margins. Own your next sale.',
-    description: 'Know what you keep from every sale. Plan Whatnot fees, price with confidence, and track your seller business with WhatFees.',
+    title: 'Whatnot Fee Calculator & Seller Toolkit | WhatFees',
+    description: 'Estimate Whatnot fees, calculate profit and break-even prices, and track TCG inventory and sales with WhatFees. Available on web and Android.',
   },
   fr: {
     toggle: 'English',
     nextToggle: 'Français',
-    title: 'WhatFees — Maîtrisez vos marges. Préparez votre prochaine vente.',
-    description: 'Sachez ce qu’il vous reste après chaque vente. Estimez les frais Whatnot, fixez vos prix et suivez votre activité avec WhatFees.',
+    title: 'Calculateur de frais Whatnot et outils de vente | WhatFees',
+    description: 'Estimez les frais Whatnot, calculez vos profits et votre seuil de rentabilité, et suivez votre inventaire TCG avec WhatFees. Sur le Web et Android.',
   },
 }
 
