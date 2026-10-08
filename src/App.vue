@@ -1,8 +1,11 @@
 <script setup>
 import { computed, ref, watch } from 'vue'
 import { content } from './content.js'
+import SearchPage from './SearchPage.vue'
+import SearchLinks from './SearchLinks.vue'
+import { landingContent } from './landing-content.js'
 
-const props = defineProps({ initialLanguage: { type: String, default: 'en' } })
+const props = defineProps({ initialLanguage: { type: String, default: 'en' }, initialPage: { type: String, default: 'home' } })
 const lang = ref(props.initialLanguage)
 const c = computed(() => content[lang.value])
 const copy = computed(() => lang.value === 'en' ? {
@@ -28,22 +31,23 @@ const base = import.meta.env.BASE_URL
 const assetUrl = (path) => `${base}${path.replace(/^\//, '')}`
 watch(lang, (value) => {
   document.documentElement.lang = value
-  document.title = c.value.title
+  const metadata = props.initialPage === 'home' ? c.value : landingContent[value].pages[props.initialPage]
+  document.title = metadata.title
   const description = document.querySelector('meta[name="description"]')
   const socialTitle = document.querySelector('meta[property="og:title"]')
   const socialDescription = document.querySelector('meta[property="og:description"]')
-  if (description) description.content = c.value.description
-  if (socialTitle) socialTitle.content = c.value.title
-  if (socialDescription) socialDescription.content = c.value.description
+  if (description) description.content = metadata.description
+  if (socialTitle) socialTitle.content = metadata.title
+  if (socialDescription) socialDescription.content = metadata.description
 })
 </script>
 
 <template>
   <a class="skip-link" href="#main">{{ c.skip }}</a>
   <header class="site-header">
-    <a class="wordmark" href="#top" :aria-label="copy.homeLabel"><span class="wordmark-symbol">W</span><span>WHATFEES<span class="wordmark-period">.</span></span></a>
+    <a class="wordmark" :href="initialPage === 'home' ? '#top' : '/'" :aria-label="copy.homeLabel"><span class="wordmark-symbol">W</span><span>WHATFEES<span class="wordmark-period">.</span></span></a>
     <nav class="main-nav" :aria-label="copy.navLabel">
-      <a href="#features">{{ c.nav[0] }}</a><a href="#inside">{{ c.nav[1] }}</a><a href="#faq">{{ c.nav[2] }}</a>
+      <a :href="initialPage === 'home' ? '#features' : '/#features'">{{ c.nav[0] }}</a><a :href="initialPage === 'home' ? '#inside' : '/#inside'">{{ c.nav[1] }}</a><a :href="initialPage === 'home' ? '#faq' : '/#faq'">{{ c.nav[2] }}</a>
     </nav>
     <div class="header-actions">
       <button class="language-toggle" type="button" @click="lang = lang === 'en' ? 'fr' : 'en'">{{ c.language }}</button>
@@ -52,6 +56,8 @@ watch(lang, (value) => {
   </header>
 
   <main id="main">
+    <SearchPage v-if="initialPage !== 'home'" :page="initialPage" :lang="lang" />
+    <template v-else>
     <section id="top" class="hero section-wrap">
       <div class="hero-copy">
         <p class="eyebrow"><span class="eyebrow-dot"></span>{{ c.eyebrow }}</p>
@@ -59,7 +65,7 @@ watch(lang, (value) => {
         <p class="hero-intro">{{ c.intro }}</p>
         <div class="hero-actions">
           <a class="button button-dark" :href="appUrl">{{ c.cta }} <span aria-hidden="true">↗</span></a>
-          <a class="text-link" href="#features">{{ c.secondary }} <span aria-hidden="true">↓</span></a>
+          <a class="text-link" :href="initialPage === 'home' ? '#features' : '/#features'">{{ c.secondary }} <span aria-hidden="true">↓</span></a>
         </div>
         <p class="hero-note"><span class="note-rule"></span>{{ c.note }}</p>
       </div>
@@ -134,7 +140,9 @@ watch(lang, (value) => {
       <div class="final-actions"><a class="button button-cream" :href="appUrl">{{ c.finalCta }} <span aria-hidden="true">↗</span></a><a class="play-link" :href="androidUrl" target="_blank" rel="noreferrer"><span class="play-icon">▷</span>{{ c.android }}</a></div>
       <span class="final-spark" aria-hidden="true">✳</span>
     </section>
+    </template>
+    <SearchLinks :lang="lang" />
   </main>
 
-  <footer class="site-footer section-wrap"><a class="wordmark footer-brand" href="#top"><span class="wordmark-symbol">W</span><span>WHATFEES<span class="wordmark-period">.</span></span></a><p>{{ c.footer }}</p><div><span>{{ c.legal }}</span></div><small>© {{ new Date().getFullYear() }} WhatFees</small></footer>
+  <footer class="site-footer section-wrap"><a class="wordmark footer-brand" :href="initialPage === 'home' ? '#top' : '/'"><span class="wordmark-symbol">W</span><span>WHATFEES<span class="wordmark-period">.</span></span></a><p>{{ c.footer }}</p><div><span>{{ c.legal }}</span></div><small>© {{ new Date().getFullYear() }} WhatFees</small></footer>
 </template>
