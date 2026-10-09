@@ -1710,3 +1710,13 @@ button {
   .hero h1 { font-size: clamp(48px, 13vw, 64px); }
   .text-link { display: inline-flex; align-items: center; }
 }
+.seller-feedback { padding-block: 48px; border-bottom: 1px solid var(--line); }
+.seller-feedback figure { margin: 0; max-width: 800px; }
+.seller-feedback blockquote { margin: 0; font: 500 clamp(23px, 3vw, 34px)/1.4 var(--display); letter-spacing: -.025em; }
+.seller-feedback figcaption { margin-top: 18px; font: 13px var(--mono); color: var(--muted); }
+.creator-note { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; padding-block: 70px; border-bottom: 1px solid var(--line); }
+.creator-note h2 { margin: 0; font: 600 clamp(32px, 4vw, 48px)/1.1 var(--display); letter-spacing: -.04em; }
+.creator-copy p { margin: 0 0 16px; font-size: 16px; line-height: 1.7; }
+.creator-copy a { display: inline-block; overflow-wrap: anywhere; line-height: 1.5; }
+.footer-links a { padding-block: 6px; }
+@media (max-width: 620px) { .creator-note { grid-template-columns: 1fr; gap: 24px; padding-block: 48px; } }

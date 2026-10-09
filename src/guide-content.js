@@ -10,7 +10,7 @@ export const guideContent = {
       calculatorLink: '/whatnot-fee-calculator/', calculatorCta: 'Calculate your sale',
       checked: 'Commission and processing information checked October 8, 2026. Confirm your own rate in Seller Hub.',
       sections: [
-        { title: 'Canadian TCG commission tiers', body: 'Whatnot sets your commission tier using sales over a 28-day period. The rate earned applies in the following period. These are Canadian TCG rates; other categories can differ.',
+        { title: 'Canadian TCG commission tiers', body: 'Whatnot sets your tier using combined sales across all categories over a 28-day period. That tier applies in the following period; the category of each sale determines its commission rate. These are Canadian TCG rates; other categories can differ.',
           table: { caption: 'Canadian TCG commission · sales in CAD', headings: ['Sales during the period', 'Commission'], rows: [['C$0–9,999', '8.00%'], ['C$10,000–19,999', '7.75%'], ['C$20,000–34,999', '7.50%'], ['C$35,000–49,999', '7.25%'], ['C$50,000–64,999', '7.00%'], ['C$65,000–84,999', '6.75%'], ['C$85,000+', '6.50%']] },
           source: { href: feeSource, label: 'Whatnot’s official fee schedule' } },
         { title: 'Processing uses a different amount', body: 'Canadian payment processing is 2.9% plus C$0.30 per transaction. It applies to the amount paid by the buyer, including shipping and tax. Commission applies to the item price.' },
@@ -42,7 +42,7 @@ export const guideContent = {
       calculatorLink: '/fr/whatnot-fee-calculator/', calculatorCta: 'Calculer votre vente',
       checked: 'Commissions et traitement vérifiés le 8 octobre 2026. Confirmez votre taux dans Seller Hub.',
       sections: [
-        { title: 'Paliers de commission TCG au Canada', body: 'Whatnot détermine votre palier selon les ventes d’une période de 28 jours. Le taux obtenu s’applique à la période suivante. Voici les taux TCG au Canada; les autres catégories peuvent différer.',
+        { title: 'Paliers de commission TCG au Canada', body: 'Whatnot détermine votre palier selon les ventes combinées de toutes les catégories sur 28 jours. Ce palier s’applique à la période suivante; la catégorie de chaque vente détermine sa commission. Voici les taux TCG au Canada; les autres catégories peuvent différer.',
           table: { caption: 'Commission TCG au Canada · ventes en CAD', headings: ['Ventes de la période', 'Commission'], rows: [['0–9 999 $', '8,00 %'], ['10 000–19 999 $', '7,75 %'], ['20 000–34 999 $', '7,50 %'], ['35 000–49 999 $', '7,25 %'], ['50 000–64 999 $', '7,00 %'], ['65 000–84 999 $', '6,75 %'], ['85 000 $ et plus', '6,50 %']] },
           source: { href: feeSource, label: 'Barème officiel de Whatnot' } },
         { title: 'Le traitement porte sur un autre montant', body: 'Au Canada, le traitement coûte 2,9 % plus 0,30 $ par transaction. Il porte sur le montant payé par l’acheteur, livraison et taxes comprises. La commission porte sur le prix de l’article.' },

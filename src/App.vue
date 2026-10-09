@@ -9,6 +9,8 @@ import PlanExpectations from './PlanExpectations.vue'
 import SearchLinks from './SearchLinks.vue'
 import FeeCalculator from './FeeCalculator.vue'
 import './search.css'
+import SellerFeedback from './SellerFeedback.vue'
+import CreatorNote from './CreatorNote.vue'
 import { pagePath } from './routes.js'
 
 const props = defineProps({ initialLanguage: { type: String, default: 'en' }, initialPage: { type: String, default: 'home' } })
@@ -60,6 +62,8 @@ const homePath = computed(() => pagePath('home',lang.value))
 
     <div class="homepage-calculator section-wrap"><FeeCalculator id="calculator" :lang="lang" compact /><p class="calculator-access-note">{{ c.calculatorAccess }}</p></div>
 
+    <SellerFeedback :lang="lang" />
+
     <ProductProof :lang="lang" />
 
     <section id="features" class="feature-section">
@@ -79,6 +83,7 @@ const homePath = computed(() => pagePath('home',lang.value))
 
     <GamesPreview :lang="lang" />
     <PlanExpectations :lang="lang" />
+    <CreatorNote :lang="lang" />
 
     <section id="faq" class="faq-section section-wrap">
       <div class="faq-heading"><p class="eyebrow">{{ c.faqKicker }}</p><h2>{{ c.faqTitle }}</h2><div class="faq-aside"><span class="aside-star">✳</span><p>{{ copy.appNote }}</p></div></div>
@@ -94,5 +99,5 @@ const homePath = computed(() => pagePath('home',lang.value))
     <SearchLinks :lang="lang" />
   </main>
 
-  <footer class="site-footer section-wrap"><a class="wordmark footer-brand" :href="homePath + '#top'"><span class="wordmark-symbol">W</span><span>WHATFEES<span class="wordmark-period">.</span></span></a><p>{{ c.footer }}</p><div><span>{{ c.legal }}</span></div><small>© {{ new Date().getFullYear() }} WhatFees</small></footer>
+  <footer class="site-footer section-wrap"><a class="wordmark footer-brand" :href="homePath + '#top'"><span class="wordmark-symbol">W</span><span>WHATFEES<span class="wordmark-period">.</span></span></a><p>{{ c.footer }}</p><div class="footer-links"><a href="mailto:unschoolers.contact@gmail.com">Contact</a><a href="https://app.whatfees.ca/privacy.html">{{ lang === 'fr' ? 'Confidentialité' : 'Privacy' }}</a><span>{{ c.legal }}</span></div><small>© {{ new Date().getFullYear() }} WhatFees</small></footer>
 </template>
