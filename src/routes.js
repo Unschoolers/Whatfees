@@ -4,6 +4,8 @@ export const pageSlugs = {
   fees: 'whatnot-fee-calculator',
   breakEven: 'break-even-calculator',
   inventory: 'tcg-inventory-tracker',
+  canadaFees: 'whatnot-fees-canada',
+  boxPricing: 'booster-box-vs-pack-profit',
 }
 export const pagePath = (id, lang = 'en') => `${lang === 'fr' ? '/fr' : ''}/${pageSlugs[id] ? `${pageSlugs[id]}/` : ''}`
 export const resolveRoute = (pathname) => {

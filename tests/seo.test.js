@@ -6,7 +6,7 @@ import { publishedRoutes, pagePath, siteUrl } from '../src/routes.js'
 const read = path => readFileSync(new URL(`../dist${path}`, import.meta.url), 'utf8')
 test('all language variants have indexable content and reciprocal metadata', () => {
   const routes = publishedRoutes()
-  assert.equal(routes.length, 8)
+  assert.equal(routes.length, 12)
   const titles = new Set()
   for (const {id,lang,path} of routes) {
     const html = read(`${path}index.html`)

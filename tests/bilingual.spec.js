@@ -3,7 +3,7 @@ import { pagePath } from '../src/routes.js'
 import { content } from '../src/content.js'
 import { landingContent } from '../src/landing-content.js'
 
-for (const id of ['home','fees','breakEven','inventory']) {
+for (const id of ['home','fees','breakEven','inventory','canadaFees','boxPricing']) {
   test(`language links preserve ${id} and survive refresh`, async ({ page }) => {
     const errors = []
     page.on('pageerror',e=>errors.push(e.message))

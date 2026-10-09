@@ -1,9 +1,11 @@
+import { guideContent } from './guide-content.js'
+
 export const landingContent = {
   en: {
     linksTitle: 'Calculators and seller guides',
-    advanced: 'Adjust fees, shipping and taxes',
     linksIntro: 'Calculate a sale or read how fees and inventory costs affect your profit.',
-    back: 'WhatFees home', cta: 'Open the seller toolkit', calculatorTitle: 'Try your numbers',
+    advanced: 'Adjust fees, shipping and taxes',
+    back: 'WhatFees home', cta: 'Open WhatFees', calculatorTitle: 'Try your numbers',
     calculatorNote: 'Illustrative defaults: 8% commission, 2.9% processing and $0.30 fixed fee. Enter your own rates. Use one currency throughout; amounts are shown in CAD.',
     assumptions: 'Commission applies to the item price; processing applies to the item price plus buyer-paid shipping and tax. Cost should include your item cost, packaging and any shipping you cover. This estimate excludes refunds, discounts not entered in the sale price, and other charges.',
     policy: 'Check your rate in Whatnot Seller Hub and the official fee policy.',
@@ -11,6 +13,7 @@ export const landingContent = {
     fields: { sale:'Item sale price', cost:'Your total cost', commission:'Commission rate (%)', processing:'Processing rate (%)', fixed:'Fixed fee per order', shipping:'Buyer-paid shipping', buyerTax:'Buyer-paid tax', feeTax:'Tax on fees (%)', target:'Target profit' },
     results: { fees:'Estimated fees', profit:'Estimated profit', breakEven:'Break-even price', target:'Price for your target profit' },
     pages: {
+      ...guideContent.en,
       fees: {
         title: 'Whatnot Fee Calculator — Estimate Your Sale Profit | WhatFees',
         description: 'Try a Whatnot fee calculator with editable commission, processing and shipping assumptions. See estimated profit and your break-even selling price.',
@@ -51,9 +54,9 @@ export const landingContent = {
   },
   fr: {
     linksTitle: 'Calculateurs et guides de vente',
-    advanced: 'Ajuster les frais, la livraison et les taxes',
     linksIntro: 'Calculez une vente ou consultez les guides sur les frais et les coûts d’inventaire.',
-    back: 'Accueil WhatFees', cta: 'Ouvrir les outils de vente', calculatorTitle: 'Essayez vos chiffres',
+    advanced: 'Ajuster les frais, la livraison et les taxes',
+    back: 'Accueil WhatFees', cta: 'Ouvrir WhatFees', calculatorTitle: 'Essayez vos chiffres',
     calculatorNote: 'Valeurs indicatives : commission de 8 %, traitement de 2,9 % et frais fixes de 0,30 $. Entrez vos propres taux. Utilisez une seule devise; les montants sont affichés en CAD.',
     assumptions: 'La commission porte sur le prix de l’article; le traitement porte sur ce prix plus la livraison et les taxes payées par l’acheteur. Le coût doit inclure l’article, l’emballage et la livraison que vous payez. Les remboursements, les rabais non inclus dans le prix et les autres frais ne sont pas calculés.',
     policy: 'Vérifiez votre taux dans Seller Hub et la politique officielle de frais Whatnot.',
@@ -61,6 +64,7 @@ export const landingContent = {
     fields: { sale:'Prix de vente de l’article', cost:'Votre coût total', commission:'Commission (%)', processing:'Traitement (%)', fixed:'Frais fixes par commande', shipping:'Livraison payée par l’acheteur', buyerTax:'Taxes payées par l’acheteur', feeTax:'Taxes sur les frais (%)', target:'Profit cible' },
     results: { fees:'Frais estimés', profit:'Profit estimé', breakEven:'Prix au seuil de rentabilité', target:'Prix pour votre profit cible' },
     pages: {
+      ...guideContent.fr,
       fees: {
         title: 'Calculateur de frais Whatnot et de profits | WhatFees',
         description: 'Essayez un calculateur de frais Whatnot avec taux de commission, traitement et livraison ajustables. Consultez votre profit et votre seuil de rentabilité.',
