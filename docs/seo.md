@@ -1,6 +1,6 @@
 # WhatFees search setup
 
-The build renders eight canonical pages: homepage, fee calculator, break-even calculator and TCG inventory guide in English and French. English URLs start at `/`; French equivalents start at `/fr/`. Language links preserve the current page. All content, titles, descriptions, canonical URLs, hreflang and factual structured data are present without JavaScript.
+The build renders twelve canonical pages: homepage, fee calculator, break-even calculator, TCG inventory guide, Canadian Whatnot fees guide and booster box versus pack profit guide in English and French. English URLs start at `/`; French equivalents start at `/fr/`. Language links preserve the current page. All content, titles, descriptions, canonical URLs, hreflang and factual structured data are present without JavaScript.
 
 Routes are declared in `src/routes.js`; page copy is in `src/content.js` and `src/landing-content.js`; metadata and sitemap markup are in `src/seo.js`. The build generates `sitemap.xml`, `robots.txt` and a noindex `404.html`. Assets use root paths for the www.whatfees.ca custom domain. Deploying to a repository subpath would require a corresponding base-path change.
 
@@ -17,4 +17,4 @@ No analytics tracker or fake ownership token is installed. Search Console can me
 
 ## Fee examples
 
-The public calculator uses editable illustrative assumptions, not a live rate lookup. Commission uses the item price; processing uses item price plus buyer-paid shipping and tax. Tax on fees is optional. The calculator links to the official Whatnot seller-fee policy. Required prices round up to the next cent; actual marketplace settlement and rounding may differ. Use the app's current purchase screen for Pro pricing rather than hard-coding an unverified amount on this site.
+The public calculator uses editable illustrative assumptions, not a live rate lookup. Commission uses the item price; processing uses item price plus buyer-paid shipping and tax. Tax on fees is optional. The calculator links to the official Whatnot seller-fee policy. Required prices round up to the next cent; actual marketplace settlement and rounding may differ. The site shows the owner-confirmed Pro price of US$10 as a one-time purchase. Update both languages if the purchase price changes. Canadian fee tiers cite Whatnot’s official policy and are dated; review them when that policy changes.

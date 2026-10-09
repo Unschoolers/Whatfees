@@ -142,3 +142,7 @@
   .demo-duel-player { gap: 8px; }
   .plan-card { padding: 21px; }
 }
+.plan-price { display: flex; flex-direction: column; gap: 8px; margin-block: 26px; }
+.plan-price strong { font: 600 42px/1.1 var(--display); letter-spacing: -.04em; }
+.plan-price span { font-size: 14px; }
+.plan-card-pro .plan-price strong { color: var(--gold); }
