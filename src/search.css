@@ -19,3 +19,10 @@
 .search-link-grid a:hover { border-color:var(--red); }
 @media(max-width:768px) { .search-article {grid-template-columns:1fr;} .calculator-fields {grid-template-columns:repeat(2,1fr);} .search-link-grid {grid-template-columns:1fr;} }
 @media(max-width:400px) { .public-calculator {padding:18px;} .calculator-fields,.calculator-results {grid-template-columns:1fr;} }
+
+.homepage-calculator { padding-top: 36px; }
+.homepage-calculator .public-calculator { margin-top: 0; }
+.calculator-access-note { margin: 14px 0 0; font-size: 14px; color: var(--muted); }
+.calculator-advanced { margin-top: 22px; }
+.calculator-advanced summary { padding-block: 12px; min-height: 44px; cursor: pointer; font-size: 14px; font-weight: 600; }
+.calculator-advanced .calculator-fields { padding-top: 16px; }
