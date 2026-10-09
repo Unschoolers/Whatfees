@@ -7,6 +7,8 @@
 .public-calculator { border:1px solid var(--line); padding:32px; background:var(--paper-deep); margin-top:36px; }
 .calculator-fields { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
 .calculator-fields label { display:flex; flex-direction:column; gap:8px; font-size:14px; line-height:1.4; }
+.calculator-field { display:flex; flex-direction:column; gap:8px; font-size:14px; line-height:1.4; }
+.calculator-field-help { font-size:12px; color:var(--muted); }
 .calculator-fields input { width:100%; min-width:0; min-height:44px; padding:12px; border:1px solid var(--line); font:inherit; color:var(--ink); background:var(--paper); border-radius:0; }
 .calculator-results { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; padding-block:28px; }
 .calculator-results>div { display:flex; flex-direction:column; gap:8px; }
