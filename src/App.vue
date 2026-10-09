@@ -99,5 +99,5 @@ const homePath = computed(() => pagePath('home',lang.value))
     <SearchLinks :lang="lang" />
   </main>
 
-  <footer class="site-footer section-wrap"><a class="wordmark footer-brand" :href="homePath + '#top'"><span class="wordmark-symbol">W</span><span>WHATFEES<span class="wordmark-period">.</span></span></a><p>{{ c.footer }}</p><div class="footer-links"><a href="mailto:unschoolers.contact@gmail.com">Contact</a><a href="https://app.whatfees.ca/privacy.html">{{ lang === 'fr' ? 'Confidentialité' : 'Privacy' }}</a><span>{{ c.legal }}</span></div><small>© {{ new Date().getFullYear() }} WhatFees</small></footer>
+  <footer class="site-footer section-wrap"><a class="wordmark footer-brand" :href="homePath + '#top'"><span class="wordmark-symbol">W</span><span>WHATFEES<span class="wordmark-period">.</span></span></a><p>{{ c.footer }}</p><div class="footer-links"><a href="https://app.whatfees.ca/privacy.html">{{ lang === 'fr' ? 'Confidentialité' : 'Privacy' }}</a><span>{{ c.legal }}</span></div><small>© {{ new Date().getFullYear() }} WhatFees</small></footer>
 </template>
