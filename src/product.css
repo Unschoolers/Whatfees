@@ -170,3 +170,23 @@
 .spectator-bracket strong { background: var(--gold); }
 .spectator-status { font: 12px/1.5 var(--mono); text-align: center; margin: 0; }
 @media (prefers-reduced-motion: reduce) { .spectator-wheel, .spectator-wheel>span { transition: none; } }
+
+/* Keep the overview brief; visitors can open the full interactive examples. */
+.games-overview { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; margin:28px 0; }
+.games-overview article { border-top:2px solid var(--gold); padding-top:16px; }
+.games-overview h3 { margin:0 0 8px; font:600 22px var(--display); }
+.games-overview p { margin:0; color:var(--muted); line-height:1.6; }
+.games-disclosure { border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+.games-disclosure summary { cursor:pointer; padding:20px 0; font-weight:600; display:flex; justify-content:space-between; gap:20px; }
+.games-disclosure summary::-webkit-details-marker { display:none; }
+.games-disclosure[open] summary span { transform:rotate(45deg); }
+.games-disclosure .games-workbench { padding:12px 0 28px; }
+.connections-section { padding-bottom:24px; }
+.connections-section .connections { padding-top:0; }
+.pricing-nav { color:var(--ink); font-size:13px; font-weight:600; text-decoration:none; white-space:nowrap; padding:12px 0; }
+@media (max-width:600px) {
+  .games-overview { grid-template-columns:1fr; gap:18px; }
+  .games-overview h3 { font-size:20px; }
+  .games-overview p { font-size:14px; }
+  .pricing-nav { font-size:12px; }
+}

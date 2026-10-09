@@ -63,6 +63,9 @@ onBeforeUnmount(() => clearTimeout(spinTimer))
       <div><p class="eyebrow">{{ p.gamesKicker }}</p><h2 id="games-title">{{ p.gamesTitle }}</h2></div>
       <p>{{ p.gamesIntro }}</p>
     </div>
+    <div class="games-overview"><article v-for="game in p.games" :key="game.id"><h3>{{ game.name }}</h3><p>{{ game.body }}</p></article></div>
+    <details class="games-disclosure">
+      <summary>{{ lang === 'fr' ? 'Essayer les trois démos' : 'Try the three demos' }}<span aria-hidden="true">+</span></summary>
     <div class="games-workbench">
       <div class="game-preview">
         <div class="game-preview-label"><span class="preview-dot" aria-hidden="true"></span>{{ p.previewLabel }}</div>
@@ -112,9 +115,10 @@ onBeforeUnmount(() => clearTimeout(spinTimer))
           <div v-else class="spectator-bracket" :aria-label="p.bracketLabel"><div><span v-for="entry in entries" :key="entry">{{ entry }}</span></div><div><span>{{ round >= 1 ? matches[0].winner : '?' }}</span><span>{{ round >= 2 ? matches[1].winner : '?' }}</span></div><div><strong>{{ winner || '?' }}</strong></div></div>
           <p class="spectator-status">{{ status }}</p>
         </div>
-        <div class="game-format-notes"><article v-for="game in p.games" :key="game.id"><h3>{{ game.name }}</h3><p>{{ game.body }}</p></article></div>
+
         <div class="spectator-sharing"><h3>{{ p.shareTitle }}</h3><ol><li v-for="step in p.shareSteps" :key="step.title"><strong>{{ step.title }}</strong><span>{{ step.body }}</span></li></ol></div>
       </div>
     </div>
+    </details>
   </section>
 </template>

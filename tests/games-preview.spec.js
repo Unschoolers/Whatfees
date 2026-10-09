@@ -3,6 +3,7 @@ import { expect, test } from '@playwright/test'
 test('wheel finishes before announcing the matching selection and ignores extra spins', async ({ page }) => {
   await page.goto('/')
   const games = page.locator('#games')
+  await games.locator('summary').click()
   const spin = games.getByRole('button', { name: 'Spin the demo wheel', exact: true })
   await spin.click()
   await expect(spin).toBeDisabled()
@@ -19,6 +20,7 @@ test('wheel finishes before announcing the matching selection and ignores extra 
 test('grid keeps earlier reveals until reset, including when changing formats', async ({ page }) => {
   await page.goto('/')
   const games = page.locator('#games')
+  await games.locator('summary').click()
   await games.getByRole('button', { name: 'Mystery grid', exact: true }).click()
   await games.getByRole('button', { name: 'Reveal square 4', exact: true }).click()
   await games.getByRole('button', { name: 'Reveal square 7', exact: true }).click()
@@ -33,6 +35,7 @@ test('grid keeps earlier reveals until reset, including when changing formats', 
 test('bracket resolves both semifinals before the final and stops at the champion', async ({ page }) => {
   await page.goto('/')
   const games = page.locator('#games')
+  await games.locator('summary').click()
   await games.getByRole('button', { name: 'Bracket battles', exact: true }).click()
   const play = games.locator('.demo-action')
   await expect(games.locator('.bracket-final')).toHaveText('?')
@@ -55,6 +58,7 @@ test('wheel honors reduced motion and lands each result beneath the pointer', as
   await page.emulateMedia({ reducedMotion: 'reduce' })
   await page.goto('/')
   const games = page.locator('#games')
+  await games.locator('summary').click()
   for (const [index, entry] of ['A', 'B', 'C', 'D'].entries()) {
     await games.locator('.demo-action').click()
     await expect(games.getByRole('status')).toContainText(`Demo selection: ${entry}`)
@@ -70,6 +74,7 @@ test('all game modes fit a narrow French screen after interaction', async ({ pag
   await page.emulateMedia({ reducedMotion: 'reduce' })
   await page.goto('/fr/')
   const games = page.locator('#games')
+  await games.locator('summary').click()
   for (const name of ['Roue', 'Grille mystère', 'Tournoi']) {
     await games.getByRole('button', { name, exact: true }).click()
     if (name === 'Grille mystère') await games.getByRole('button', { name: 'Révéler la case 4', exact: true }).click()

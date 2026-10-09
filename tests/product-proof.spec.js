@@ -12,6 +12,7 @@ test('seller scenarios show their matching product screen', async ({ page }) => 
 test('illustrative mystery grid reveals a selected square and can reset', async ({ page }) => {
   await page.goto('/')
   const games = page.locator('#games')
+  await games.locator('summary').click()
   await games.getByRole('button', { name: 'Mystery grid', exact: true }).click()
   await games.getByRole('button', { name: 'Reveal square 4', exact: true }).click()
   await expect(games.getByRole('status')).toContainText('Square 4 revealed')

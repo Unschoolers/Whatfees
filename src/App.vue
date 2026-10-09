@@ -31,9 +31,10 @@ const homePath = computed(() => pagePath('home',lang.value))
   <header class="site-header">
     <a class="wordmark" :href="homePath + '#top'" :aria-label="copy.homeLabel"><span class="wordmark-symbol">W</span><span>WHATFEES<span class="wordmark-period">.</span></span></a>
     <nav class="main-nav" :aria-label="copy.navLabel">
-      <a :href="homePath + '#features'">{{ c.nav[0] }}</a><a :href="homePath + '#inside'">{{ c.nav[1] }}</a><a :href="homePath + '#faq'">{{ c.nav[2] }}</a>
+      <a :href="homePath + '#games'">{{ lang === 'fr' ? 'Jeux' : 'Games' }}</a><a :href="homePath + '#inside'">{{ c.nav[1] }}</a><a :href="homePath + '#faq'">{{ c.nav[2] }}</a>
     </nav>
     <div class="header-actions">
+      <a class="pricing-nav" :href="homePath + '#plans'">{{ lang === 'fr' ? 'Tarifs' : 'Pricing' }}</a>
       <a class="language-toggle" :href="pagePath(initialPage === 'notFound' ? 'home' : initialPage, lang === 'en' ? 'fr' : 'en')" :hreflang="lang === 'en' ? 'fr' : 'en'">{{ c.language }}</a>
       <a class="header-cta" :href="appUrl">{{ c.cta }} <span aria-hidden="true">↗</span></a>
     </div>
@@ -62,27 +63,16 @@ const homePath = computed(() => pagePath('home',lang.value))
 
     <div class="homepage-calculator section-wrap"><FeeCalculator id="calculator" :lang="lang" compact /><p class="calculator-access-note">{{ c.calculatorAccess }}</p></div>
 
+    <PlanExpectations :lang="lang" />
     <SellerFeedback :lang="lang" />
 
     <ProductProof :lang="lang" />
 
-    <section id="features" class="feature-section">
-      <div class="section-wrap">
-        <div class="features-header"><div><p class="eyebrow">{{ c.featuresKicker }}</p><h2>{{ c.featuresTitle }}</h2></div><span class="section-index">{{ copy.toolkitIndex }}</span></div>
-        <div class="feature-list">
-          <article v-for="feature in c.features" :key="feature.n" class="feature-row">
-            <div class="feature-number">{{ feature.n }}</div>
-            <div class="feature-main"><span class="feature-tag">{{ feature.tag }}</span><h3>{{ feature.title }}</h3></div>
-            <p class="feature-description">{{ feature.body }}</p>
-            <span class="feature-arrow" aria-hidden="true">↗</span>
-          </article>
-        </div>
+    <section id="features" class="connections-section section-wrap">
         <div class="connections"><span class="connection-label">{{ c.connectedKicker }}</span><div class="connection-copy"><h3>{{ c.connectedTitle }}</h3><p>{{ c.connectedBody }}</p></div><div class="connection-chips"><span>{{ c.whatnot }}</span><span>{{ c.shopify }}</span></div></div>
-      </div>
     </section>
 
     <GamesPreview :lang="lang" />
-    <PlanExpectations :lang="lang" />
     <CreatorNote :lang="lang" />
 
     <section id="faq" class="faq-section section-wrap">

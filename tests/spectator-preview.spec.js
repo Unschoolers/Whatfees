@@ -3,6 +3,7 @@ import { expect, test } from '@playwright/test'
 test('spectator illustration follows host reveals and reset without exposing controls', async ({ page }) => {
   await page.goto('/')
   const games = page.locator('#games')
+  await games.locator('summary').click()
   const spectator = games.getByRole('region', { name: 'SPECTATOR VIEW', exact: true })
   await games.getByRole('button', { name: 'Mystery grid', exact: true }).click()
   await games.getByRole('button', { name: 'Reveal square 4', exact: true }).click()
