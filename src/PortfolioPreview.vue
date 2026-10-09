@@ -19,7 +19,7 @@ const ticks = [400, 0, -400, -800]
 const copy = {
   en: {
     label: 'PORTFOLIO EXAMPLE · FICTIONAL DATA',
-    title: 'See the recovery. Then the return.',
+    title: 'Investment recovery over six shows.',
     current: 'Current P&L', period: 'ONE LOT · SIX SHOWS',
     trend: 'Profit trend', unit: 'CAD', netLine: 'Net sales − investment', zero: 'Break-even',
     start: 'Start', showAxis: 'Show number · 0 = start',
@@ -33,7 +33,7 @@ const copy = {
   },
   fr: {
     label: 'EXEMPLE DE PORTEFEUILLE · DONNÉES FICTIVES',
-    title: 'Voyez le coût récupéré, puis le gain.',
+    title: 'Récupération du coût sur six directs.',
     current: 'Résultat actuel', period: 'UN LOT · SIX DIRECTS',
     trend: 'Évolution du résultat', unit: 'CAD', netLine: 'Ventes nettes − investissement', zero: 'Seuil de rentabilité',
     start: 'Départ', showAxis: 'Numéro du direct · 0 = départ',

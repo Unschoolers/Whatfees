@@ -27,7 +27,7 @@ const src = computed(() => shot.value.src ? `${import.meta.env.BASE_URL}screensh
       <figure id="scenario-screen" class="scenario-screen">
         <div v-if="shot.kind !== 'chart'" class="proof-window-label"><span>{{ shot.kind === 'chart' ? p.portfolioExample : p.actualApp }}</span><span aria-hidden="true">0{{ selected + 1 }} / 03</span></div>
         <PortfolioPreview v-if="shot.kind === 'chart'" :lang="lang" />
-        <a v-else :href="src" target="_blank" rel="noreferrer" :aria-label="`${shot.caption}: ${p.openImage}`"><img :src="src" :alt="shot.alt" width="1100" height="1050" loading="lazy" /></a>
+        <a v-else :class="{ 'sales-screen-crop': shot.src === 'sales.webp' }" :href="src" target="_blank" rel="noreferrer" :aria-label="`${shot.caption}: ${p.openImage}`"><img :src="src" :alt="shot.alt" width="1100" height="1050" loading="lazy" /></a>
         <figcaption>{{ shot.caption }}<span v-if="shot.kind !== 'chart'" aria-hidden="true">↗</span></figcaption>
       </figure>
     </div>

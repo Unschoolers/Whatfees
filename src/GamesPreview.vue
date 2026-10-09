@@ -66,6 +66,7 @@ onBeforeUnmount(() => clearTimeout(spinTimer))
     <div class="games-workbench">
       <div class="game-preview">
         <div class="game-preview-label"><span class="preview-dot" aria-hidden="true"></span>{{ p.previewLabel }}</div>
+        <p class="demo-panel-label">{{ p.hostLabel }}</p>
         <div class="game-mode-switch" :aria-label="p.previewLabel">
           <button v-for="game in p.games" :key="game.id" type="button" :aria-pressed="mode === game.id" aria-controls="game-stage" @click="mode = game.id">{{ game.name }}</button>
         </div>
@@ -104,6 +105,13 @@ onBeforeUnmount(() => clearTimeout(spinTimer))
         <p class="game-illustration-note">{{ p.previewNote }}</p>
       </div>
       <div class="spectator-copy">
+        <div class="spectator-demo" role="region" :aria-label="p.spectatorLabel">
+          <div class="spectator-demo-heading"><span>{{ p.spectatorLabel }}</span><span>{{ p.games.find(game => game.id === mode).name }}</span></div>
+          <div v-if="mode === 'wheel'" class="spectator-wheel-wrap" aria-hidden="true"><span class="wheel-pointer"></span><div class="spectator-wheel" :style="{ transform: `rotate(${wheelRotation}deg)`, transition: wheelTurn === 0 ? 'none' : undefined }"><span v-for="(entry,i) in entries" :key="entry" :class="`spectator-entry-${i}`" :style="{ transform: `rotate(${-wheelRotation}deg)`, transition: wheelTurn === 0 ? 'none' : undefined }">{{ entry }}</span></div></div>
+          <div v-else-if="mode === 'grid'" class="spectator-grid" :aria-label="p.spectatorGrid"><span v-for="n in 9" :key="n" :data-square="n" :data-revealed="squares.has(n)">{{ squares.has(n) ? entries[(n - 1) % entries.length] : String(n).padStart(2, '0') }}</span></div>
+          <div v-else class="spectator-bracket" :aria-label="p.bracketLabel"><div><span v-for="entry in entries" :key="entry">{{ entry }}</span></div><div><span>{{ round >= 1 ? matches[0].winner : '?' }}</span><span>{{ round >= 2 ? matches[1].winner : '?' }}</span></div><div><strong>{{ winner || '?' }}</strong></div></div>
+          <p class="spectator-status">{{ status }}</p>
+        </div>
         <div class="game-format-notes"><article v-for="game in p.games" :key="game.id"><h3>{{ game.name }}</h3><p>{{ game.body }}</p></article></div>
         <div class="spectator-sharing"><h3>{{ p.shareTitle }}</h3><ol><li v-for="step in p.shareSteps" :key="step.title"><strong>{{ step.title }}</strong><span>{{ step.body }}</span></li></ol></div>
       </div>

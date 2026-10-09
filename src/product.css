@@ -3,6 +3,8 @@
 .proof-window-label { display: flex; justify-content: space-between; gap: 12px; align-items: center; padding: 13px 16px; font: 10px/1.5 var(--mono); letter-spacing: .045em; }
 .hero-proof .proof-window-label { color: var(--gold); }
 .hero-proof-image, .scenario-screen>a { display: block; }
+.hero-proof-image { height: 270px; overflow: hidden; }
+.hero-proof .hero-proof-image img { width: max(100%, 720px); max-width: none; transform: translateY(-100px); }
 .hero-proof img, .scenario-screen img { display: block; width: 100%; height: auto; }
 .hero-proof figcaption { display: grid; gap: 5px; padding: 16px 18px 19px; }
 .hero-proof figcaption strong { font: 600 20px/1.2 var(--display); letter-spacing: -.035em; }
@@ -146,3 +148,25 @@
 .plan-price strong { font: 600 42px/1.1 var(--display); letter-spacing: -.04em; }
 .plan-price span { font-size: 14px; }
 .plan-card-pro .plan-price strong { color: var(--gold); }
+.sales-screen-crop { height: 480px; overflow: hidden; }
+.scenario-screen .sales-screen-crop img { width: max(100%, 720px); max-width: none; transform: translateY(-100px); }
+.demo-panel-label { font: 11px/1.5 var(--mono); color: var(--paper); margin: 0 0 14px; }
+.spectator-demo { background: var(--paper-deep); border: 1px solid var(--line); padding: 22px; margin-bottom: 28px; }
+.spectator-demo-heading { display: flex; flex-wrap: wrap; gap: 8px 18px; justify-content: space-between; font: 11px/1.5 var(--mono); color: var(--muted); }
+.spectator-demo-heading span:first-child { color: var(--red); }
+.spectator-wheel-wrap { width: 170px; height: 170px; margin: 34px auto 20px; position: relative; }
+.spectator-wheel { width: 100%; height: 100%; border-radius: 50%; background: conic-gradient(#d4a940 0deg 90deg, #bd4936 90deg 180deg, #d7d1c2 180deg 270deg, #967842 270deg 360deg); border: 4px solid var(--paper); position: relative; transition: transform 1.2s cubic-bezier(.18,.7,.2,1); }
+.spectator-wheel>span { position: absolute; translate: -50% -50%; font: 600 20px/1 var(--display); transition: transform 1.2s cubic-bezier(.18,.7,.2,1); }
+.spectator-entry-0 { top: 28%; left: 72%; }
+.spectator-entry-1 { top: 72%; left: 72%; color: var(--paper); }
+.spectator-entry-2 { top: 72%; left: 28%; }
+.spectator-entry-3 { top: 28%; left: 28%; color: var(--paper); }
+.spectator-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 7px; max-width: 220px; margin: 24px auto; }
+.spectator-grid span { display: grid; place-content: center; aspect-ratio: 1; border: 1px solid var(--line); background: var(--paper); font: 16px var(--mono); }
+.spectator-grid span[data-revealed=true] { background: var(--gold); font-weight: 600; }
+.spectator-bracket { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; margin-block: 24px; }
+.spectator-bracket>div { display: flex; flex-direction: column; justify-content: space-around; gap: 8px; }
+.spectator-bracket span, .spectator-bracket strong { text-align: center; padding: 8px; background: var(--paper); border: 1px solid var(--line); font: 16px var(--mono); }
+.spectator-bracket strong { background: var(--gold); }
+.spectator-status { font: 12px/1.5 var(--mono); text-align: center; margin: 0; }
+@media (prefers-reduced-motion: reduce) { .spectator-wheel, .spectator-wheel>span { transition: none; } }
