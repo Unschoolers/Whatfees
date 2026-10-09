@@ -2,7 +2,6 @@ export const siteUrl = 'https://www.whatfees.ca'
 export const pageSlugs = {
   home: '',
   fees: 'whatnot-fee-calculator',
-  breakEven: 'break-even-calculator',
   inventory: 'tcg-inventory-tracker',
   canadaFees: 'whatnot-fees-canada',
   boxPricing: 'booster-box-vs-pack-profit',
@@ -18,3 +17,8 @@ export const resolveRoute = (pathname) => {
   return { id: 'notFound', lang: normalized.startsWith('/fr/') ? 'fr' : 'en' }
 }
 export const publishedRoutes = () => ['en','fr'].flatMap(lang => Object.keys(pageSlugs).map(id => ({ id, lang, path:pagePath(id,lang) })))
+export const redirectRoutes = () => ['en', 'fr'].map(lang => ({
+  lang,
+  path: `${lang === 'fr' ? '/fr' : ''}/break-even-calculator/`,
+  destination: pagePath('fees', lang),
+}))

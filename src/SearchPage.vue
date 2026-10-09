@@ -12,7 +12,7 @@ const article = computed(() => copy.value.pages[props.page])
     <p class="eyebrow">WHATFEES / {{ lang === 'fr' ? 'OUTILS DE VENTE' : 'SELLER TOOLS' }}</p>
     <h1>{{ article.heading }}</h1>
     <p class="search-intro">{{ article.intro }}</p>
-    <FeeCalculator v-if="['fees', 'breakEven'].includes(page)" :lang="lang" />
+    <FeeCalculator v-if="page === 'fees'" :lang="lang" />
     <a v-else-if="article.calculatorLink" class="button button-dark" :href="article.calculatorLink">{{ article.calculatorCta }} ↗</a>
     <a v-else class="button button-dark" href="https://app.whatfees.ca">{{ copy.cta }} ↗</a>
     <div class="search-article"><section v-for="section in article.sections" :key="section.title"><h2>{{ section.title }}</h2><p>{{ section.body }}</p>

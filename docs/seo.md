@@ -1,6 +1,6 @@
 # WhatFees search setup
 
-The build renders twelve canonical pages: homepage, fee calculator, break-even calculator, TCG inventory guide, Canadian Whatnot fees guide and booster box versus pack profit guide in English and French. English URLs start at `/`; French equivalents start at `/fr/`. Language links preserve the current page. All content, titles, descriptions, canonical URLs, hreflang and factual structured data are present without JavaScript.
+The build renders ten canonical pages: homepage, fee calculator, TCG inventory guide, Canadian Whatnot fees guide and booster box versus pack profit guide in English and French. English URLs start at `/`; French equivalents start at `/fr/`. Language links preserve the current page. The retired English and French break-even pages redirect to their matching Whatnot fee calculator with immediate HTML refresh, a fallback link and canonical destination; they are noindex and excluded from the sitemap. All content, titles, descriptions, canonical URLs, hreflang and factual structured data are present without JavaScript.
 
 Routes are declared in `src/routes.js`; page copy is in `src/content.js` and `src/landing-content.js`; metadata and sitemap markup are in `src/seo.js`. The build generates `sitemap.xml`, `robots.txt` and a noindex `404.html`. Assets use root paths for the www.whatfees.ca custom domain. Deploying to a repository subpath would require a corresponding base-path change.
 

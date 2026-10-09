@@ -23,7 +23,7 @@ export const guideContent = {
       description: 'Compare selling a sealed booster box with selling its packs. Use a worked example to see how order fees, pack prices and unsold inventory change the result.',
       heading: 'Sell the booster box or its packs?',
       intro: 'Opening a box changes what you can sell. Compare the net proceeds from the sealed box with the packs before you open it.',
-      calculatorLink: '/break-even-calculator/', calculatorCta: 'Calculate a break-even price',
+      calculatorLink: '/whatnot-fee-calculator/', calculatorCta: 'Calculate a break-even price',
       sections: [
         { title: 'One box, two selling options', body: 'Suppose a box costs C$80 and contains 16 packs. You could sell it sealed for C$120 or sell each pack for C$8. This example uses 8% commission, 2.9% processing and C$0.30 per order, with no shipping, taxes or packaging. These are editable assumptions, not a quote.',
           table: { caption: 'Fictional example · all packs sold, amounts in CAD', headings: ['Selling option', 'Gross sales', 'Fees', 'Profit'], rows: [['Sealed box · one order', '$120.00', '$13.38', '$26.62'], ['16 packs · 16 orders', '$128.00', '$18.75', '$29.25'], ['16 packs · one order', '$128.00', '$14.25', '$33.75']] } },
@@ -55,7 +55,7 @@ export const guideContent = {
       description: 'Comparez une boîte scellée et la vente de ses paquets. Un exemple montre l’effet des frais par commande, du prix des paquets et de l’inventaire invendu.',
       heading: 'Vendre la boîte de boosters ou ses paquets ?',
       intro: 'Ouvrir une boîte change ce que vous pouvez vendre. Comparez le revenu net de la boîte scellée avec celui des paquets avant de l’ouvrir.',
-      calculatorLink: '/fr/break-even-calculator/', calculatorCta: 'Calculer un prix au seuil de rentabilité',
+      calculatorLink: '/fr/whatnot-fee-calculator/', calculatorCta: 'Calculer un prix au seuil de rentabilité',
       sections: [
         { title: 'Une boîte, deux options de vente', body: 'Une boîte coûte 80 $ et contient 16 paquets. Vous pouvez la vendre scellée à 120 $ ou vendre les paquets à 8 $ chacun. Cet exemple utilise une commission de 8 %, un traitement de 2,9 % et des frais fixes de 0,30 $ par commande, sans livraison, taxes ni emballage. Ce sont des hypothèses ajustables.',
           table: { caption: 'Exemple fictif · tous les paquets vendus, montants en CAD', headings: ['Option de vente', 'Ventes brutes', 'Frais', 'Profit'], rows: [['Boîte scellée · une commande', '120,00 $', '13,38 $', '26,62 $'], ['16 paquets · 16 commandes', '128,00 $', '18,75 $', '29,25 $'], ['16 paquets · une commande', '128,00 $', '14,25 $', '33,75 $']] } },

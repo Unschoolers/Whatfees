@@ -2,7 +2,6 @@ import { expect, test } from '@playwright/test'
 
 for (const [path, heading] of [
   ['/whatnot-fee-calculator/', 'Whatnot fee calculator'],
-  ['/break-even-calculator/', 'Break-even calculator for sellers'],
   ['/tcg-inventory-tracker/', 'TCG inventory tracking for cards, boxes and packs'],
 ]) {
   test(`search page ${path} works on direct entry and refresh`, async ({ page, request }) => {
@@ -31,9 +30,25 @@ test('public calculator estimates fees and reacts to shipping and profit targets
 })
 
 test('French calculator explains the percentage of cost and calculates its target price', async ({ page }) => {
-  await page.goto('/fr/break-even-calculator/')
+  await page.goto('/fr/whatnot-fee-calculator/')
   const target = page.getByRole('spinbutton', { name: 'Profit cible (%)', exact: true })
   await expect(target).toHaveAccessibleDescription(/Pourcentage de votre coût total/)
   await target.fill('20')
   await expect(page.locator('[data-result="target"]')).toContainText('81,15')
 })
+
+for (const prefix of ['', '/fr']) {
+  test(`retired ${prefix}/break-even-calculator/ redirects with or without JavaScript`, async ({ browser }) => {
+    for (const javaScriptEnabled of [true, false]) {
+      const context = await browser.newContext({ javaScriptEnabled })
+      const page = await context.newPage()
+      for (const suffix of ['/', '/index.html']) {
+        await page.goto(`${prefix}/break-even-calculator${suffix}`)
+        await expect(page).toHaveURL(new RegExp(`${prefix}/whatnot-fee-calculator/$`))
+        await expect(page.getByRole('heading', { level: 1 })).toHaveText(prefix ? 'Calculateur de frais Whatnot' : 'Whatnot fee calculator')
+        await expect(page.locator('[data-result="breakEven"]')).toContainText(prefix ? '67,68' : '67.68')
+      }
+      await context.close()
+    }
+  })
+}

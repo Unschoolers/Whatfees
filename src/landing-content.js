@@ -2,7 +2,7 @@ import { guideContent } from './guide-content.js'
 
 export const landingContent = {
   en: {
-    linksTitle: 'Calculators and seller guides',
+    linksTitle: 'Fee calculator and seller guides',
     linksIntro: 'Calculate a sale or read how fees and inventory costs affect your profit.',
     advanced: 'Adjust fees, shipping and taxes',
     targetHelp: 'Percentage of your total cost. For example, 20% of $60 = $12 profit after fees.',
@@ -24,19 +24,8 @@ export const landingContent = {
           { title:'What goes into a fee estimate?', body:'Start with the item selling price. Commission and payment processing can use different bases, so a single percentage on the item price can miss part of the deduction. The calculator separates commission, processing, buyer-paid shipping and buyer-paid tax. Add tax on fees if it applies to your sale.' },
           { title:'A $100 box is not $100 in your pocket', body:'Using the example defaults, with no shipping, tax or other charges, a $100 sale has $11.20 in estimated fees. If your total cost is $60, the estimated profit is $28.80. Change the inputs to reflect your own category, market and costs; these are example assumptions, not a guaranteed Whatnot rate.' },
           { title:'Why your category and sales tier matter', body:'Use the commission rate shown in your own Seller Hub. Category, market, sales tier and promotions can change the rate. Payment processing still needs its own input. Check your final order breakdown after a sale rather than treating an estimate as a settlement.' },
+          { title:'Break-even and target-profit prices', body:'With a $60 total cost, the example rates of 8% commission and 2.9% processing plus $0.30 per order give a break-even price of $67.68. A 20% profit target means $12 after fees and a required price of $81.15. These examples exclude shipping and taxes; the calculator rounds required prices up to the next cent.' },
           { title:'Use your inventory costs in the app', body:'Record costs for lots or individual items in WhatFees and calculate a break-even price. Pro adds target-profit pricing, sales tracking and portfolio reports. This public calculator works without an account; the full app requires Google sign-in.' },
-        ],
-      },
-      breakEven: {
-        title: 'Break-Even Calculator for Whatnot Sellers | WhatFees',
-        description: 'Find a selling price that covers inventory costs and fees. Try an editable break-even calculator, then add a target profit for your cards and boxes.',
-        heading: 'Break-even calculator for sellers',
-        intro: 'Before accepting an offer or choosing a starting price, know the amount needed to recover your cost after selling fees.',
-        sections: [
-          { title:'Break-even starts with your real cost', body:'Include what you paid for the item and other costs you cover, such as packaging or seller-paid shipping. Use consistent currency amounts. For a grouped purchase, decide what portion of the lot cost belongs to the box, pack or card you are selling before entering it here.' },
-          { title:'Work backward from what you need to keep', body:'With percentage fees, simply adding the fee percentage to your cost will usually leave a shortfall. The target profit is a percentage of your total cost. For this model, the required price is (cost × (1 + target percentage ÷ 100) + fixed fee effects) divided by (1 − effective percentage fee rate). Buyer-paid shipping and tax contribute to the processing fee, not to item-sale revenue.' },
-          { title:'A practical minimum-price example', body:'With $60 in total cost, 8% commission, 2.9% processing and a $0.30 fixed fee, and no shipping or taxes, the break-even price is $67.68. The calculator rounds a required price upward to the next cent. A 20% target on that $60 cost means $12 profit after fees and a required price of $81.15 under the same assumptions.' },
-          { title:'Break-even is a decision aid', body:'Recovering an item’s cost is different from covering your whole business. Time, overhead, refunds and currency conversion can also affect the result. Use the calculator for a clearly defined sale, then review recorded sales and portfolio performance in WhatFees to see how your selling activity adds up.' },
         ],
       },
       inventory: {
@@ -54,7 +43,7 @@ export const landingContent = {
     },
   },
   fr: {
-    linksTitle: 'Calculateurs et guides de vente',
+    linksTitle: 'Calculateur de frais et guides de vente',
     linksIntro: 'Calculez une vente ou consultez les guides sur les frais et les coûts d’inventaire.',
     advanced: 'Ajuster les frais, la livraison et les taxes',
     targetHelp: 'Pourcentage de votre coût total. Par exemple, 20 % sur 60 $ = 12 $ de profit après frais.',
@@ -76,19 +65,8 @@ export const landingContent = {
           { title:'Que comprend une estimation de frais ?', body:'Commencez par le prix de vente de l’article. La commission et le traitement des paiements peuvent porter sur des montants différents. Le calculateur sépare ces taux, la livraison et les taxes payées par l’acheteur. Ajoutez un taux de taxes sur les frais lorsqu’il s’applique à votre vente.' },
           { title:'Une boîte à 100 $ ne laisse pas 100 $', body:'Avec les valeurs indicatives, sans livraison, taxes ni autres frais, une vente de 100 $ entraîne des frais estimés de 11,20 $. Pour un coût total de 60 $, le profit estimé est de 28,80 $. Adaptez les champs à votre catégorie, votre marché et vos coûts : les valeurs de départ ne garantissent aucun taux Whatnot.' },
           { title:'La catégorie et le palier de ventes comptent', body:'Utilisez le taux de commission affiché dans votre Seller Hub. La catégorie, le marché, le palier de ventes et les promotions peuvent le modifier. Le traitement des paiements reste un champ distinct. Vérifiez le détail de la commande après la vente pour connaître les retenues finales.' },
+          { title:'Seuil de rentabilité et profit cible', body:'Pour un coût total de 60 $, les taux indicatifs de 8 % de commission et 2,9 % de traitement plus 0,30 $ par commande donnent un seuil de rentabilité de 67,68 $. Une cible de 20 % représente 12 $ après frais et un prix requis de 81,15 $. Ces exemples excluent la livraison et les taxes; le calculateur arrondit les prix requis au cent supérieur.' },
           { title:'Utilisez vos coûts d’inventaire dans l’application', body:'Notez les coûts de vos lots ou articles dans WhatFees et calculez le seuil de rentabilité. Pro ajoute le profit cible, le suivi des ventes et les rapports de portefeuille. Ce calculateur public fonctionne sans compte; l’application complète exige une connexion Google.' },
-        ],
-      },
-      breakEven: {
-        title: 'Calculateur de seuil de rentabilité pour vendeurs | WhatFees',
-        description: 'Trouvez un prix qui couvre vos coûts et frais de vente. Essayez le calculateur de seuil de rentabilité et ajoutez un profit cible pour vos cartes et boîtes.',
-        heading: 'Calculateur de seuil de rentabilité pour vendeurs',
-        intro: 'Avant d’accepter une offre ou de choisir un prix de départ, trouvez le montant nécessaire pour récupérer votre coût après les frais de vente.',
-        sections: [
-          { title:'Commencez par votre coût réel', body:'Incluez le coût de l’article et les dépenses que vous assumez, comme l’emballage ou la livraison. Gardez la même devise pour tous les montants. Pour un achat groupé, déterminez la part du coût du lot attribuée à la boîte, au paquet ou à la carte vendue.' },
-          { title:'Partez du montant à conserver', body:'Ajouter simplement le pourcentage de frais au coût laisse souvent un manque. Le profit cible est un pourcentage de votre coût total. Dans ce modèle, le prix requis est (coût × (1 + pourcentage cible ÷ 100) + effets des frais fixes) divisé par (1 − taux effectif des frais proportionnels). La livraison et les taxes payées par l’acheteur augmentent les frais de traitement, sans devenir un revenu de vente de l’article.' },
-          { title:'Un exemple de prix minimum', body:'Avec un coût total de 60 $, une commission de 8 %, un traitement de 2,9 % et des frais fixes de 0,30 $, sans livraison ni taxes, le seuil de rentabilité est de 67,68 $. Le calculateur arrondit le prix requis au cent supérieur. Une cible de 20 % sur ce coût de 60 $ donne 12 $ de profit après frais et un prix requis de 81,15 $ selon les mêmes hypothèses.' },
-          { title:'Un outil pour décider', body:'Récupérer le coût d’un article ne couvre pas forcément toute votre activité. Le temps, les frais généraux, les remboursements et les conversions de devises peuvent aussi compter. Calculez une vente précise, puis consultez les ventes enregistrées et le portefeuille dans WhatFees pour comprendre les résultats d’ensemble.' },
         ],
       },
       inventory: {
