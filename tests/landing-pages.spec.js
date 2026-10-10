@@ -16,12 +16,13 @@ for (const [path, heading] of [
   })
 }
 
-test('public calculator estimates fees and reacts to shipping and profit targets', async ({ page }) => {
+test('public calculator estimates fees at the required price and reacts to advanced assumptions', async ({ page }) => {
   await page.goto('/whatnot-fee-calculator/')
-  await expect(page.locator('[data-result="fees"]')).toContainText('11.20')
-  await expect(page.locator('[data-result="profit"]')).toContainText('28.80')
+  await expect(page.locator('[data-result="fees"]')).toContainText('9.15')
+  await expect(page.locator('[data-result="profit"]')).toContainText('12.00')
+  await page.locator('.calculator-advanced summary').click()
   await page.getByLabel('Buyer-paid shipping').fill('10')
-  await expect(page.locator('[data-result="fees"]')).toContainText('11.49')
+  await expect(page.locator('[data-result="fees"]')).toContainText('9.47')
   await page.getByRole('spinbutton', { name: 'Target profit (%)', exact: true }).fill('15')
   await expect(page.locator('[data-result="target"]')).toContainText('78.11')
   await page.getByLabel('Commission rate (%)').fill('100')

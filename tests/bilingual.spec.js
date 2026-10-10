@@ -28,7 +28,9 @@ test('French landing page is useful with JavaScript disabled', async ({ browser 
   await page.goto('/fr/whatnot-fee-calculator/')
   await expect(page.getByRole('heading',{level:1})).toHaveText('Calculateur de frais Whatnot')
   await expect(page.getByRole('link',{name:'English',exact:true})).toHaveAttribute('href','/whatnot-fee-calculator/')
-  await expect(page.locator('[data-result="profit"]')).toContainText('28,80')
+  await expect(page.locator('[data-result="target"]')).toContainText('81,15')
+  await expect(page.locator('[data-result="profit"]')).toContainText('12,00')
+  await expect(page.locator('.public-calculator input:visible')).toHaveCount(2)
   await context.close()
 })
 

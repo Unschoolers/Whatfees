@@ -61,7 +61,7 @@ const homePath = computed(() => pagePath('home',lang.value))
 
     <section class="benefit-strip" :aria-label="copy.benefitsLabel"><div v-for="(item, i) in c.strip" :key="item" class="benefit-item"><span class="benefit-number">0{{ i + 1 }}</span><span>{{ item }}</span><span class="benefit-arrow">↗</span></div></section>
 
-    <div class="homepage-calculator section-wrap"><FeeCalculator id="calculator" :lang="lang" compact /><p class="calculator-access-note">{{ c.calculatorAccess }}</p></div>
+    <div class="homepage-calculator section-wrap"><FeeCalculator id="calculator" :lang="lang" /><p class="calculator-access-note">{{ c.calculatorAccess }}</p></div>
 
     <PlanExpectations :lang="lang" />
 

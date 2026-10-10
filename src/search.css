@@ -6,6 +6,7 @@
 .search-article p,.public-calculator p,.search-links p { line-height:1.7; }
 .public-calculator { border:1px solid var(--line); padding:32px; background:var(--surface); border-radius:12px; margin-top:36px; }
 .calculator-fields { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+.calculator-basic-fields { grid-template-columns:repeat(2,minmax(0,1fr)); }
 .calculator-fields label { display:flex; flex-direction:column; gap:8px; font-size:14px; line-height:1.4; }
 .calculator-field { display:flex; flex-direction:column; gap:8px; font-size:14px; line-height:1.4; }
 .calculator-field-help { font-size:14px; color:var(--muted); }
@@ -13,6 +14,9 @@
 .calculator-results { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; padding-block:28px; }
 .calculator-results>div { display:flex; flex-direction:column; gap:8px; }
 .calculator-results strong { font:600 32px var(--display); color:var(--red); }
+.calculator-results .calculator-price { grid-column:1/-1; padding:20px; border-left:3px solid var(--accent-text); border-radius:8px; background:var(--surface-raised); }
+.calculator-price strong { font-size:clamp(34px,5vw,44px); line-height:1.15; overflow-wrap:anywhere; }
+.calculator-price small { font-size:14px; line-height:1.6; color:var(--text-muted); }
 .calculator-assumptions { font-size:14px; }
 .public-calculator .text-link { display:inline-block; line-height:1.5; }
 .search-links { padding-block:48px; border-top:1px solid var(--line); }
