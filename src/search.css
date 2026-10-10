@@ -38,3 +38,44 @@
 .guide-table thead { background: var(--paper-deep); }
 .guide-table th:first-child { padding-left: 0; }
 .guide-checked { color: var(--muted); font-size: 13px; margin-bottom: 24px; }
+
+/* Inventory guide: collectible artwork and clear breaks between topics. */
+.inventory-page .search-page-header { display: grid; grid-template-columns: 1.15fr 1fr; gap: 48px; align-items: center; }
+.inventory-page .search-page-heading { min-width: 0; }
+.inventory-page h1 { font-size: clamp(34px, 3.7vw, 50px); line-height: 1.1; text-wrap: balance; }
+.inventory-page .search-intro { font-size: 18px; color: var(--muted); margin-block: 0 28px; }
+.inventory-illustration { margin: 0; min-width: 0; }
+.inventory-illustration svg { display: block; width: 100%; height: auto; }
+.inventory-illustration figcaption { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; padding-inline: 24px; text-align: center; font: 12px/1.6 var(--mono); color: var(--muted); }
+.inventory-art-shadow { fill: var(--surface-raised); }
+.inventory-art-grid { stroke: var(--line); stroke-dasharray: 3 7; opacity: .6; }
+.inventory-art-surface { fill: var(--surface); stroke: var(--ink); }
+.inventory-art-top { fill: var(--surface-raised); stroke: var(--ink); }
+.inventory-art-side { fill: var(--surface-raised); stroke: var(--ink); }
+.inventory-art-outline { stroke: var(--ink); }
+.inventory-art-detail { stroke: var(--muted); stroke-linecap: round; }
+.inventory-art-gold { fill: var(--gold); stroke: var(--accent-text); }
+.inventory-art-cutout { fill: var(--surface); stroke: none; }
+.inventory-art-spark { stroke: var(--accent-text); stroke-width: 2; stroke-linecap: round; }
+.inventory-page .search-article { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px 32px; margin-block: 64px 0; }
+.inventory-page .search-article section { position: relative; min-width: 0; border-top: 1px solid var(--line); padding-top: 24px; }
+.inventory-page .search-article section::before { content: ''; position: absolute; top: -2px; left: 0; width: 36px; height: 3px; background: var(--gold); }
+.inventory-section-number { display: block; color: var(--accent-text); font: 12px/1.5 var(--mono); margin-bottom: 16px; }
+.inventory-page .search-article h2 { margin: 0 0 16px; font-size: 25px; line-height: 1.25; letter-spacing: -.025em; text-wrap: balance; }
+.inventory-page .search-article p { margin: 0; color: var(--muted); }
+.inventory-page .search-article .inventory-closing { grid-column: 1/-1; padding: 32px; background: var(--surface-raised); border: 1px solid var(--line); border-radius: 12px; }
+.inventory-page .inventory-closing::before { left: 32px; }
+.inventory-page .inventory-closing p { max-width: 760px; margin-bottom: 24px; }
+@media (max-width: 1000px) {
+  .inventory-page .search-page-header { gap: 24px; }
+  .inventory-page .search-article { grid-template-columns: 1fr; gap: 36px; }
+  .inventory-page .search-article p { max-width: 760px; }
+}
+@media (max-width: 768px) {
+  .inventory-page { padding-block: 40px; }
+  .inventory-page .search-page-header { grid-template-columns: 1fr; gap: 32px; }
+  .inventory-illustration { width: min(100%, 480px); margin-inline: auto; }
+  .inventory-page .search-article { margin-top: 44px; }
+  .inventory-page .search-article .inventory-closing { padding: 24px; }
+  .inventory-page .inventory-closing::before { left: 24px; }
+}
