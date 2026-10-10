@@ -59,6 +59,8 @@ test('wheel honors reduced motion and lands each result beneath the pointer', as
   await page.goto('/')
   const games = page.locator('#games')
   await games.locator('summary').click()
+  await expect(games.locator('.demo-wheel')).toHaveCSS('transition-duration', '0s')
+  await expect(games.locator('.demo-action')).toBeEnabled()
   for (const [index, entry] of ['A', 'B', 'C', 'D'].entries()) {
     await games.locator('.demo-action').click()
     await expect(games.getByRole('status')).toContainText(`Demo selection: ${entry}`)

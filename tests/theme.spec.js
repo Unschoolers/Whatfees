@@ -2,6 +2,7 @@ import { expect, test } from '@playwright/test'
 import { publishedRoutes } from '../src/routes.js'
 
 const pageColors = { light: 'rgb(246, 244, 238)', dark: 'rgb(25, 27, 29)' }
+const viewportWidths = [320, 390, 768, 1440]
 
 // Resolve translucent surfaces through their ancestors, then measure visible text.
 // The wheel has a multicolor gradient: all four stop colors are checked separately.
@@ -46,31 +47,52 @@ for (const colorScheme of ['light', 'dark']) {
   test(`automatic ${colorScheme} theme works before hydration without JavaScript`, async ({ browser }) => {
     const context = await browser.newContext({ javaScriptEnabled:false, colorScheme })
     const page = await context.newPage()
-    await page.goto('/')
+    await page.setViewportSize({ width:390, height:900 })
+    await page.goto(publishedRoutes().find(route => route.id === 'home' && route.lang === 'en').path)
     await expect(page.locator('html')).toHaveCSS('background-color', pageColors[colorScheme])
     await expect(page.locator('body')).toHaveCSS('color', colorScheme === 'light' ? 'rgb(37, 39, 42)' : 'rgb(242, 240, 233)')
+    await expect(page.locator('main h1')).toBeVisible()
+    await expect(page.locator('main h1')).not.toBeEmpty()
+    await expect(page.locator('#calculator')).toBeVisible()
+    expect(await page.locator('#calculator input').count()).toBeGreaterThan(0)
+    expect((await page.locator('main').innerText()).length).toBeGreaterThan(200)
     await context.close()
   })
   for (const route of publishedRoutes()) {
     test(`${route.path} has readable ${colorScheme} text and focused fields`, async ({ page }) => {
       await page.emulateMedia({ colorScheme })
-      await page.goto(route.path)
-      await expect(page.locator('html')).toHaveCSS('background-color', pageColors[colorScheme])
-      await expect(page.locator('select,button,a').filter({hasText:/^(System|Light|Dark|Appearance|Theme)$/i})).toHaveCount(0)
-      await page.locator('details').evaluateAll(elements => elements.forEach(element => {element.open = true}))
-      const input = page.locator('input').first()
-      if (await input.count()) {
-        await input.focus()
-        expect(await input.evaluate(element => getComputedStyle(element).outlineStyle)).toBe('solid')
+      for (const width of viewportWidths) {
+        await page.setViewportSize({ width, height:900 })
+        await page.goto(route.path)
+        await expect(page.locator('html')).toHaveCSS('background-color', pageColors[colorScheme])
+        await expect(page.locator('select,button,a').filter({hasText:/^(System|Light|Dark|Appearance|Theme)$/i})).toHaveCount(0)
+        await expect(page.locator('[data-theme-toggle], [aria-label*="theme" i], [aria-label*="appearance" i]')).toHaveCount(0)
+        await page.locator('details').evaluateAll(elements => elements.forEach(element => {element.open = true}))
+        expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width)
+        expect(await contrastFailures(page)).toEqual([])
+        if (width === 320) {
+          const input = page.locator('input').first()
+          if (await input.count()) {
+            await input.focus()
+            expect(await input.evaluate(element => getComputedStyle(element).outlineStyle)).toBe('solid')
+          }
+        }
       }
-      expect(await contrastFailures(page)).toEqual([])
       if (route.id === 'home') {
         const games = page.locator('#games')
         await games.getByRole('button', {name:route.lang === 'fr' ? 'Grille mystère' : 'Mystery grid', exact:true}).click()
         await games.locator('.demo-mystery-grid button').nth(3).click()
+        await expect(games.locator('.demo-mystery-grid button').nth(3)).toBeDisabled()
         expect(await contrastFailures(page)).toEqual([])
+        await games.getByRole('button', {name:route.lang === 'fr' ? 'Réinitialiser l’aperçu' : 'Reset preview', exact:true}).click()
+        await expect(games.locator('.demo-mystery-grid button').nth(3)).toBeEnabled()
         await games.getByRole('button', {name:route.lang === 'fr' ? 'Tournoi' : 'Bracket battles', exact:true}).click()
         await games.locator('.demo-action').click()
+        expect(await contrastFailures(page)).toEqual([])
+        const proof = page.locator('#inside')
+        await proof.getByRole('button', {name:route.lang === 'fr' ? 'Vous prévoyez un achat ?' : 'Planning your next buy?', exact:true}).click()
+        await expect(proof.locator('.portfolio-preview svg[role="img"]')).toBeVisible()
+        await expect(proof.locator('.portfolio-demo-label')).toBeVisible()
         expect(await contrastFailures(page)).toEqual([])
       }
     })
@@ -89,7 +111,7 @@ test('OS theme changes update the same loaded page without a theme control', asy
 })
 
 for (const colorScheme of ['light', 'dark']) {
-  for (const width of [320, 390, 768, 1440]) {
+  for (const width of viewportWidths) {
     test(`${colorScheme} expanded interfaces fit ${width}px in both languages`, async ({ page }) => {
       await page.emulateMedia({colorScheme})
       await page.setViewportSize({width, height:900})
