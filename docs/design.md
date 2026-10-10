@@ -15,3 +15,5 @@ Keep copy specific to what the app does. The creator intro identifies Julien as 
 The homepage calculator needs no account. Advanced fee, shipping and tax fields expand on demand and retain their values. Real screenshot crops prioritize populated sales data; selecting an image opens the full screenshot. Game illustrations show a read-only spectator panel driven by the same local demo state as the host controls.
 
 Use the current Unschoolers/Calcul8 source code to verify product features and calculator behavior before changing marketing claims. The app implementation is the source of truth; documentation and public pages alone are not enough verification.
+
+The English and French TCG inventory pages use an original inline SVG of a booster box, packs and cards beside the introduction. Theme variables colour the artwork in light and dark mode. Gold-accented section dividers and decorative numbering distinguish the topics, while Web/Android access and the final app link share a tinted closing panel. The guide remains prerendered and readable without JavaScript.
