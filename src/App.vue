@@ -29,7 +29,7 @@ const homePath = computed(() => pagePath('home',lang.value))
 <template>
   <a class="skip-link" href="#main">{{ c.skip }}</a>
   <header class="site-header">
-    <a class="wordmark" :href="homePath + '#top'" :aria-label="copy.homeLabel"><span class="wordmark-symbol">W</span><span>WHATFEES<span class="wordmark-period">.</span></span></a>
+    <a class="wordmark" :href="homePath + '#top'" :aria-label="copy.homeLabel"><img class="brand-icon" src="/brand-icon.png" alt="" width="34" height="34" /><span>WhatFees</span></a>
     <nav class="main-nav" :aria-label="copy.navLabel">
       <a :href="homePath + '#games'">{{ lang === 'fr' ? 'Jeux' : 'Games' }}</a><a :href="homePath + '#inside'">{{ c.nav[1] }}</a><a :href="homePath + '#faq'">{{ c.nav[2] }}</a>
     </nav>
@@ -53,7 +53,7 @@ const homePath = computed(() => pagePath('home',lang.value))
           <a class="button button-dark" href="#calculator">{{ c.tryCalculator }} <span aria-hidden="true">↓</span></a>
           <a class="text-link" :href="appUrl">{{ c.cta }} <span aria-hidden="true">↗</span></a>
         </div>
-        <p class="hero-note"><span class="note-rule"></span>{{ c.note }}</p>
+        <p class="hero-price">{{ lang === 'fr' ? 'Commencez gratuitement.' : 'Start free.' }} <strong>{{ lang === 'fr' ? 'Pro : 10 $ US, une seule fois.' : 'Pro is US$10, once.' }}</strong><br />{{ lang === 'fr' ? 'Web et Android · Aucun abonnement' : 'Web and Android · No subscription' }}</p>
       </div>
       <HeroProof :lang="lang" />
       <div class="hero-rail"><span>{{ copy.collectPriceSell }}</span><span>01 — 03</span></div>
@@ -64,7 +64,6 @@ const homePath = computed(() => pagePath('home',lang.value))
     <div class="homepage-calculator section-wrap"><FeeCalculator id="calculator" :lang="lang" compact /><p class="calculator-access-note">{{ c.calculatorAccess }}</p></div>
 
     <PlanExpectations :lang="lang" />
-    <SellerFeedback :lang="lang" />
 
     <ProductProof :lang="lang" />
 
@@ -73,6 +72,7 @@ const homePath = computed(() => pagePath('home',lang.value))
     </section>
 
     <GamesPreview :lang="lang" />
+    <SellerFeedback :lang="lang" />
     <CreatorNote :lang="lang" />
 
     <section id="faq" class="faq-section section-wrap">
@@ -89,5 +89,5 @@ const homePath = computed(() => pagePath('home',lang.value))
     <SearchLinks :lang="lang" />
   </main>
 
-  <footer class="site-footer section-wrap"><a class="wordmark footer-brand" :href="homePath + '#top'"><span class="wordmark-symbol">W</span><span>WHATFEES<span class="wordmark-period">.</span></span></a><p>{{ c.footer }}</p><div class="footer-links"><a href="https://app.whatfees.ca/privacy.html">{{ lang === 'fr' ? 'Confidentialité' : 'Privacy' }}</a><span>{{ c.legal }}</span></div><small>© {{ new Date().getFullYear() }} WhatFees</small></footer>
+  <footer class="site-footer section-wrap"><a class="wordmark footer-brand" :href="homePath + '#top'"><img class="brand-icon" src="/brand-icon.png" alt="" width="34" height="34" /><span>WhatFees</span></a><p>{{ c.footer }}</p><div class="footer-links"><a href="https://app.whatfees.ca/privacy.html">{{ lang === 'fr' ? 'Confidentialité' : 'Privacy' }}</a><span>{{ c.legal }}</span></div><small>© {{ new Date().getFullYear() }} WhatFees<span class="quebec-origin">{{ lang === 'fr' ? 'Conçu au Québec' : 'Designed in Québec' }}</span></small></footer>
 </template>

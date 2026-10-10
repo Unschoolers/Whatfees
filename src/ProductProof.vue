@@ -2,12 +2,12 @@
 import { computed, ref } from 'vue'
 import { productContent } from './product-content.js'
 import PortfolioPreview from './PortfolioPreview.vue'
+import ScenarioIllustration from './ScenarioIllustration.vue'
 import './product.css'
 const props = defineProps({ lang: { type: String, default: 'en' } })
 const p = computed(() => productContent[props.lang] || productContent.en)
 const selected = ref(2)
-const shot = computed(() => p.value.scenarios[selected.value])
-const src = computed(() => shot.value.src ? `${import.meta.env.BASE_URL}screenshots/${shot.value.src}` : null)
+const scenario = computed(() => p.value.scenarios[selected.value])
 </script>
 
 <template>
@@ -25,10 +25,9 @@ const src = computed(() => shot.value.src ? `${import.meta.env.BASE_URL}screensh
         </article>
       </div>
       <figure id="scenario-screen" class="scenario-screen">
-        <div v-if="shot.kind !== 'chart'" class="proof-window-label"><span>{{ shot.kind === 'chart' ? p.portfolioExample : p.actualApp }}</span><span aria-hidden="true">0{{ selected + 1 }} / 03</span></div>
-        <PortfolioPreview v-if="shot.kind === 'chart'" :lang="lang" />
-        <a v-else :class="{ 'sales-screen-crop': shot.src === 'sales.webp' }" :href="src" target="_blank" rel="noreferrer" :aria-label="`${shot.caption}: ${p.openImage}`"><img :src="src" :alt="shot.alt" width="1100" height="1050" loading="lazy" /></a>
-        <figcaption>{{ shot.caption }}<span v-if="shot.kind !== 'chart'" aria-hidden="true">↗</span></figcaption>
+        <PortfolioPreview v-if="scenario.kind === 'chart'" :lang="lang" />
+        <ScenarioIllustration v-else :key="scenario.kind" :kind="scenario.kind" :lang="lang" />
+        <figcaption>{{ scenario.caption }}</figcaption>
       </figure>
     </div>
   </section>
