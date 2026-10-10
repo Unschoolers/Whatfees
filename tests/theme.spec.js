@@ -56,6 +56,7 @@ for (const colorScheme of ['light', 'dark']) {
     await expect(page.locator('#calculator')).toBeVisible()
     expect(await page.locator('#calculator input').count()).toBeGreaterThan(0)
     expect((await page.locator('main').innerText()).length).toBeGreaterThan(200)
+    expect(await contrastFailures(page)).toEqual([])
     await context.close()
   })
   for (const route of publishedRoutes()) {

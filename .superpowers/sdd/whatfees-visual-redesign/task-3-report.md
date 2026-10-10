@@ -22,3 +22,5 @@ Verification:
 Remaining review: no Task 3 guide/search screenshots were captured. Automated overflow and contrast checks cover every required width/theme/locale; the controller's earlier home visual review covers 12 mobile/desktop light/dark English/French cases. The controller retains representative guide/search visual review and publication.
 
 No dependency or production behavior changed. No calculator code, deployment, or push was touched.
+
+Review follow-up: the no-JavaScript theme fixture also runs the contrast helper against its actual prerendered form input and text. Focused check after this follow-up, `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/tmp/chromium npx playwright test tests/theme.spec.js -g 'automatic .* theme works before hydration without JavaScript'`: **2 passed** (light and dark). The full suite above was completed before this assertion-only addition; only the requested focused no-JavaScript checks were rerun.
